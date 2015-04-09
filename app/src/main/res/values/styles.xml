@@ -1,0 +1,56 @@
+<resources>
+
+    <!--
+    Base application theme, dependent on API level. This theme is replaced
+    by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+-->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/book_pending</item>
+        <item name="colorPrimaryDark">@color/list_section_background</item>
+    </style>
+
+    <style
+        name="BookDetailSubHeading">
+        <item
+            name="android:layout_gravity">right</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_width">wrap_content</item>
+        <item
+            name="android:layout_marginRight">7dp</item>
+        <item
+            name="android:textStyle">bold</item>
+    </style>
+    <style
+        name="BookDetailContent">
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_width">wrap_content</item>
+        <item
+            name="android:paddingBottom">7dp</item>
+        <item
+            name="android:paddingRight">7dp</item>
+        <item
+            name="android:textColorLink">@color/link</item>
+    </style>
+
+    <style name="MainTheme" parent="AppTheme">
+        <item name="actionBarStyle">@style/ActionBar.Solid.NoTitle</item>
+    </style>
+    <style name="ActionBar.Solid.NoTitle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="displayOptions">useLogo|showHome</item>
+        <item name="logo">@drawable/logo</item>
+    </style>
+
+</resources>

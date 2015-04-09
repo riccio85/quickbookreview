@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">A Book Finder</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="overview">Overview</string>
+    <string name="published">Published</string>
+    <string name="isbn">ISBN</string>
+    <string name="subject">Subject</string>
+    <string name="size">Size</string>
+    <string name="series">Series</string>
+    <string name="title_activity_book_search_view">BookSearchView</string>
+    <string name="save">SAVE</string>
+    <string name="action_share">Share</string>
+    <string name="price">List Price</string>
+
+</resources>
