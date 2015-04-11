@@ -4,54 +4,36 @@
     android:layout_height="wrap_content"
     android:background="@color/LightYellow">
 
-    <ImageView
-        android:id="@+id/bookCover"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="10dp"
-        android:background="#ffcccccc" />
-
     <TextView
-        android:id="@+id/bookTitle"
+        android:id="@+id/Stitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/bookCover"
-        android:layout_toRightOf="@+id/bookCover"
-        android:text="A List item title"
         android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/authors"
+        android:id="@+id/Sauthors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookTitle"
         android:layout_marginTop="5dp"
         android:maxLines="4"
-        android:layout_toRightOf="@+id/bookCover"
-        android:text="The List item description"
         android:textSize="14sp" />
-     <TextView
-        android:id="@+id/publisher"
+    <TextView
+        android:id="@+id/Spublisher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/authors"
         android:layout_marginTop="10dp"
         android:maxLines="4"
-        android:layout_toRightOf="@+id/bookCover"
-        android:text="The List item description"
         android:textSize="14sp" />
     <TextView
-        android:id="@+id/pages"
+        android:id="@+id/Spages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/publisher"
         android:layout_marginTop="10dp"
         android:maxLines="4"
-        android:layout_toRightOf="@+id/bookCover"
-        android:text="The List item description"
         android:textSize="14sp" />
 
 </RelativeLayout>

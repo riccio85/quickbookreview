@@ -29,7 +29,7 @@ public class Book implements Parcelable {
     private ArrayList<Book> bookList;
 
     public Book(String id,String title,String author,String descrp,String publish,String isbn,String price,String pages,float rating,Bitmap image){
-        //(id,rating,title,subtitle,author,series,descrp,publish,sub,pages,image)
+
         this.id=id;
         this.title=title;
         this.author=author;

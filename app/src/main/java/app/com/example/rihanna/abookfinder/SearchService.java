@@ -86,7 +86,7 @@ public class SearchService extends IntentService {
               int nums=BookJsonParse.totalItems(response);
               if(nums==0){    //nessun libro con quel titolo
                   books=new ArrayList<Book>();
-                  books.add(new Book ("id_b","NESSUNLIBRO","authours_b","description_b","publish","isbn","price","pages_b",3,null));
+                  books.add(new Book (null,"NO BOOK WITH THIS TITLE",null,null,null,null,null,null,3,null));
               } else {
                   books = parseResult(response);
               }

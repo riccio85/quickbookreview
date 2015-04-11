@@ -52,6 +52,7 @@ public class BookJsonParse {
             final String INDUSTRY_ID="industryIdentifiers";
             final String ISBN_TYPE="type";
             final String ISBN_ID="identifier";
+            final String RATING= "averageRating";
 
             if (isJSONValid(jsonStr)) {
                 JSONObject booksJson = (JSONObject) new JSONObject(jsonStr);
@@ -86,6 +87,10 @@ public class BookJsonParse {
                                    int pages=volInfo.getInt(PAGES);
                                    pages_b=pages+" pages";
                                }catch(Exception e){ }
+               float rates=0;
+                                try{
+                                    rates=volInfo.getLong(RATING);
+                                }catch(Exception e){}
 
                String description_b="";
                         try{
@@ -123,7 +128,7 @@ public class BookJsonParse {
                        price="NOT_FOR_SALE";}
                     }catch(Exception e){}
  /* Create the book and add it to the arraylist*/
-                 bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,isbn,price,pages_b,3, bitmap));
+                 bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,isbn,price,pages_b,rates, bitmap));
               }
                 bookList=bookL;
                 return bookL;

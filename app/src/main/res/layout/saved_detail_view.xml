@@ -1,0 +1,116 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollDetail"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/LightYellow">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="@+id/s_cont"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0px"
+            android:layout_weight="1.0">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/s_book_header_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp">
+                    <ImageView
+                        android:id="@+id/s_thumbnail"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:paddingLeft="3dp" />
+                    <LinearLayout
+
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/s_title"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:gravity="center"
+                            android:paddingRight="3dp"/>
+                        <TextView
+                            android:id="@+id/s_creators"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:gravity="center"
+                            android:textStyle="italic" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <TableLayout
+                    android:id="@+id/s_detail_table_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:shrinkColumns="1">
+                    <TableRow>
+                        <TextView
+                            style="@style/BookDetailSubHeading"
+                            android:text="@string/overview" />
+                        <TextView
+                            style="@style/BookDetailContent"
+                            android:id="@+id/s_overview" />
+                    </TableRow>
+                    <TableRow
+                        android:id="@+id/s_published_row">
+                        <TextView
+                            style="@style/BookDetailSubHeading"
+                            android:text="@string/published" />
+                        <TextView
+                            style="@style/BookDetailContent"
+                            android:id="@+id/s_published" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/BookDetailSubHeading"
+                            android:text="@string/isbn" />
+                        <TextView
+                            style="@style/BookDetailContent"
+                            android:id="@+id/s_isbns" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/BookDetailSubHeading"
+                            android:text="@string/price" />
+                        <TextView
+                            style="@style/BookDetailContent"
+                            android:id="@+id/s_price" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/BookDetailSubHeading"
+                            android:text="@string/size" />
+                        <TextView
+                            style="@style/BookDetailContent"
+                            android:id="@+id/s_size" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:clickable="true"
+            android:text="@string/save"
+            android:background="@drawable/delete"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+</ScrollView>

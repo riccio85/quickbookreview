@@ -3,6 +3,7 @@
     package="app.com.example.rihanna.abookfinder" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -13,17 +14,29 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".BookSearchView"
-            android:label="@string/title_activity_book_search_view" >
-        </activity>
-        <!-- Declaring Service in Manifest -->
+        <!--
+                <provider
+                    android:name=".db.BooksContentProvider"
+                    android:authorities="app.com.example.rihanna.abookfinder.provider" >
+                </provider>   -->
+
+                <activity
+                    android:name=".BookSearchView"
+                    android:label="@string/title_activity_book_search_view" >
+                </activity>
+                <!-- Declaring Service in Manifest -->
         <service
             android:name=".SearchService"
             android:exported="false" />
+
+        <activity
+            android:name=".FavoritesActivity"
+            android:label="@string/title_activity_favorites" >
+        </activity>
     </application>
 
 </manifest>

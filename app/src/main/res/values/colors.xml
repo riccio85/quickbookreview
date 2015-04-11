@@ -30,4 +30,5 @@
 <color name="list_section_foreground">#fff</color>
 <color name="titlebar">#aaa</color>
 <color name="titlebar_icon_background_pressed">#9bdcff</color>
+<color name="LightYellow">#FFFFE0</color>
 </resources>
