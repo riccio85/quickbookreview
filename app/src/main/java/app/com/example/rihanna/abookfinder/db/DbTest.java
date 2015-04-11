@@ -88,9 +88,43 @@ public class DbTest extends SQLiteOpenHelper {
                 data.add(bo);
             }while(cursor.moveToNext());
         }
+
         return data;
     }
 
+
+
+    public boolean deleteHardCode(Book book) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String idBook = book.getId();
+        db.delete(TABLE_NAME, COLUMN_IDBOOK  + "= '" + idBook + "'", null);
+        return true;
+    }
+   /*     String idDb;
+        String sQuery= "SELECT "+  COLUMN_IDBOOK + " FROM "+ TABLE_NAME;
+        Cursor cursor= db.rawQuery(sQuery, null);
+        if(cursor.moveToFirst()){
+            do{
+                idDb=cursor.getString(cursor.getColumnIndex(COLUMN_IDBOOK));
+                if(idDb.equals(idBook)){
+                    try {
+                        db.delete(TABLE_NAME, COLUMN_IDBOOK + "=" + idBook, null);
+                        cursor.close();
+                        db.close();
+                        return true;
+                    }catch(Exception e){}
+                }
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return false;
+
+       // SQLiteDatabase database=this.getWritableDatabase();
+      //  database.insertOrThrow(BookDB.BooksEntry.TABLE_NAME,null,values);
+      //  database.close();
+
+    }-*/
 
 
 }

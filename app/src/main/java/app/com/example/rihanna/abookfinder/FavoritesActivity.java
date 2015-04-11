@@ -42,6 +42,7 @@ public class FavoritesActivity extends ActionBarActivity
                               // implements LoaderManager.LoaderCallbacks<Cursor>
     ImageButton button;
     ListView listview;
+    Book book;
     ArrayList<Book> favoriteList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class FavoritesActivity extends ActionBarActivity
         }
     }
     public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-        Book book = favoriteList.get(position);
+        book = favoriteList.get(position);
         setContentView(R.layout.saved_detail_view);
         ImageView image = (ImageView) findViewById(R.id.s_thumbnail);
         TextView title = (TextView) findViewById(R.id.s_title);
@@ -89,9 +90,16 @@ public class FavoritesActivity extends ActionBarActivity
 
         button = (ImageButton) findViewById(R.id.deleteButton);
 
-
         if (button != null) {
-            // button.setOnClickListener(new View onClickListener());
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    if(book!=null){
+                    DbTest dbTest=new DbTest(getApplication());
+                    dbTest.deleteHardCode(book);}
+                   startActivity(new Intent(getApplication(),FavoritesActivity.class));
+                }
+            });
+
         }
         if (favoriteList != null) {
             Book viewBook = favoriteList.get(position);

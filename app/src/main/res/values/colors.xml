@@ -18,7 +18,8 @@
 <resources>
 <color name="book_normal">#429900</color>
 <color name="book_unknown">#0000</color>
-<color name="book_pending">#fabb00</color>
+<!--color name="book_pending">#fabb00</color-->
+<color name="book_pending">#40E0D0</color>
 <color name="book_late">#e22626</color>
 <color name="count">#1af</color>
 <color name="edit_label">#1af</color>
@@ -29,6 +30,6 @@
 <color name="list_section_background">#666</color>
 <color name="list_section_foreground">#fff</color>
 <color name="titlebar">#aaa</color>
-<color name="titlebar_icon_background_pressed">#9bdcff</color>
+<color name="titlebar_icon_background_pressed">#40E0D0</color>
 <color name="LightYellow">#FFFFE0</color>
 </resources>
