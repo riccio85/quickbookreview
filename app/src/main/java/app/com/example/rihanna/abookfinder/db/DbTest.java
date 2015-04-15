@@ -29,6 +29,7 @@ public class DbTest extends SQLiteOpenHelper {
     public static final String COLUMN_OVERVIEW="overview";
     public static final String COLUMN_ISBNS="isbns";
     public static final String COLUMN_PRICE="subjects";
+    public static final String COLUMN_BUY="buyLink";
 
 
     public DbTest(Context context){
@@ -48,7 +49,8 @@ public class DbTest extends SQLiteOpenHelper {
                 + COLUMN_PUBLISHER + " TEXT,"
                 + COLUMN_ISBNS + " TEXT,"
                 + COLUMN_PRICE + " TEXT,"
-                + COLUMN_PAGES + " TEXT" +
+                + COLUMN_PAGES + " TEXT,"
+                + COLUMN_BUY + " TEXT "+
                 // BooksEntry.COLUMN_IMAGE + "BLOB, " +
                 ");";
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE);
@@ -83,8 +85,9 @@ public class DbTest extends SQLiteOpenHelper {
                 String isbns=cursor.getString(cursor.getColumnIndex(COLUMN_ISBNS));
                 String price=cursor.getString(cursor.getColumnIndex(COLUMN_PRICE));
                 String pages=cursor.getString(cursor.getColumnIndex(COLUMN_PAGES));
+                String buy=cursor.getString(cursor.getColumnIndex(COLUMN_BUY));
                 //get the data into array
-                Book bo=new Book(bookid,title,authors,overview,publish,isbns,price,pages,0,null);
+                Book bo=new Book(bookid,title,authors,overview,publish,isbns,price,pages,0,buy,null);
                 data.add(bo);
             }while(cursor.moveToNext());
         }

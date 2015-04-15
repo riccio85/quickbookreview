@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import app.com.example.rihanna.abookfinder.utils.BookJsonParse;
-
 /**
  * Created by Rihanna on 07/04/2015.
  */
@@ -58,7 +57,6 @@ public class SearchService extends IntentService {
                     receiver.send(STATUS_FINISHED, bundle);
                 }
             } catch (Exception e) {
-
                 /* Sending error message back to activity */
                 bundle.putString(Intent.EXTRA_TEXT, e.toString());
                 receiver.send(STATUS_ERROR, bundle);
@@ -86,7 +84,7 @@ public class SearchService extends IntentService {
               int nums=BookJsonParse.totalItems(response);
               if(nums==0){    //nessun libro con quel titolo
                   books=new ArrayList<Book>();
-                  books.add(new Book (null,"NO BOOK WITH THIS TITLE",null,null,null,null,null,null,3,null));
+                  books.add(new Book (null,"NO BOOK WITH THIS TITLE",null,null,null,null,null,null,3,null,null));
               } else {
                   books = parseResult(response);
               }

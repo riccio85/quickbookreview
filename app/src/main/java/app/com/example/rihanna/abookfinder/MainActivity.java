@@ -22,7 +22,6 @@ public class MainActivity extends ActionBarActivity {
          search.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Log.i("input string onclick ", "2");
                  EditText value=(EditText)findViewById(R.id.takeTitle);
                  String title = value.getText().toString();
                  //pass user input for a search class

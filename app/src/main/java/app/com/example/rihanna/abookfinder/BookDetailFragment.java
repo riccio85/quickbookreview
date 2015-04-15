@@ -41,8 +41,8 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
     ImageButton button;
     public BookDetailFragment(){
     }
-    @Override
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.book_detail_view, container, false);
@@ -57,6 +57,7 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
             TextView isbns=(TextView)rootView.findViewById(R.id.isbns);
             TextView price=(TextView)rootView.findViewById(R.id.price);
             TextView size=(TextView)rootView.findViewById(R.id.size);
+            TextView link=(TextView)rootView.findViewById(R.id.buyLink);
             RatingBar ratingBar=(RatingBar)rootView.findViewById(R.id.rating);
 
 
@@ -78,6 +79,7 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
             isbns.setText(viewBook.getIsbns());
             price.setText(viewBook.getPrice());
             size.setText(viewBook.getPages());
+            link.setText(viewBook.getBuyLink());
             if(viewBook.getRating()>5) {
                 ratingBar.setRating(5);
             }else {ratingBar.setRating(viewBook.getRating());}
@@ -110,6 +112,7 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                             values.put(BookDB.BooksEntry.COLUMN_ISBNS,book.getIsbns());
                             values.put(BookDB.BooksEntry.COLUMN_PRICE,book.getPrice());
                             values.put(BookDB.BooksEntry.COLUMN_PAGES,book.getPages());
+                            values.put(BookDB.BooksEntry.COLUMN_BUY,book.getBuyLink());
                        if(dbHelper.insertHardCode(values)){
                            Toast.makeText(getActivity(), "Book Saved", Toast.LENGTH_LONG).show();}
                 }

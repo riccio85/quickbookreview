@@ -108,7 +108,6 @@ public class BookSearchView extends ActionBarActivity
             super.onBackPressed();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

@@ -54,6 +54,7 @@ public class BookDB {
         public static String COLUMN_OVERVIEW="overview";
         public static String COLUMN_ISBNS="isbns";
         public static String COLUMN_PRICE="subjects";
+        public static String COLUMN_BUY="buyLink";
       //  public static String COLUMN_RATING="rating";
 
     }

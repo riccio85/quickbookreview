@@ -53,6 +53,7 @@ public class BookJsonParse {
             final String ISBN_TYPE="type";
             final String ISBN_ID="identifier";
             final String RATING= "averageRating";
+            final String BUY_LINK="buyLink";
 
             if (isJSONValid(jsonStr)) {
                 JSONObject booksJson = (JSONObject) new JSONObject(jsonStr);
@@ -114,6 +115,7 @@ public class BookJsonParse {
                      }catch(Exception e){}
 
                String price="";
+               String buylink="";
                    try{
                        JSONObject saleInfo=bookInfo.getJSONObject(SALE_INFO);
                        String forSale=saleInfo.getString(SALEABILITY);
@@ -123,12 +125,13 @@ public class BookJsonParse {
                                String lprice=listPrice.getString(AMOUNT);
                                String curr=listPrice.getString(CURRENCY);
                                price=lprice+curr;
+                               buylink=saleInfo.getString(BUY_LINK);
                            }catch(Exception e){}
                        }else{
                        price="NOT_FOR_SALE";}
                     }catch(Exception e){}
  /* Create the book and add it to the arraylist*/
-                 bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,isbn,price,pages_b,rates, bitmap));
+                 bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,isbn,price,pages_b,rates,buylink, bitmap));
               }
                 bookList=bookL;
                 return bookL;

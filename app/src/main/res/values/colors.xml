@@ -24,7 +24,7 @@
 <color name="count">#1af</color>
 <color name="edit_label">#1af</color>
 <color name="edittext_background">#eee</color>
-<color name="edittext_background_pressed">#9bdcff</color>
+<color name="background_pressed">#9bdcff</color>
 <color name="edittext_border">#1af</color>
 <color name="link">#4e7ccc</color>
 <color name="list_section_background">#666</color>

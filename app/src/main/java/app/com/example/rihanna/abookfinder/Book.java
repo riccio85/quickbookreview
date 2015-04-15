@@ -9,11 +9,10 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-// qui manca definire prendere immagine e memorizzarlo sia piccolo che grande e caricarlo dinamicamente
 public class Book implements Parcelable {
    public boolean isFullBook;
 
-    Book book; ////questione per parcelable
+    Book book;
 
     private String id;
     private String title;
@@ -24,11 +23,13 @@ public class Book implements Parcelable {
     private String isbns;
     private String price;
     private float rating;
+    private String buyLink;
     private Bitmap imageId;
+
 
     private ArrayList<Book> bookList;
 
-    public Book(String id,String title,String author,String descrp,String publish,String isbn,String price,String pages,float rating,Bitmap image){
+    public Book(String id,String title,String author,String descrp,String publish,String isbn,String price,String pages,float rating,String buyLink,Bitmap image){
 
         this.id=id;
         this.title=title;
@@ -39,13 +40,13 @@ public class Book implements Parcelable {
         this.price=price;
         this.pages=pages;
         this.rating=rating;
+        this.buyLink=buyLink;
         this.imageId=image;
     }
 
     public Book(Book bookToParcel) {
         this.book = bookToParcel;
     }
-
     public Bitmap getImageLink() {
         return imageId;
     }
@@ -107,8 +108,6 @@ public class Book implements Parcelable {
         this.price = price;
     }
 
-
-
     @Override
     public int describeContents() {
         return 0;
@@ -133,6 +132,13 @@ public class Book implements Parcelable {
 
     private Book(Parcel in) {
       book = (Book) in.readValue(null);
+    }
+    public String getBuyLink() {
+        return buyLink;
+    }
+
+    public void setBuyLink(String buyLink) {
+        this.buyLink = buyLink;
     }
 
 
