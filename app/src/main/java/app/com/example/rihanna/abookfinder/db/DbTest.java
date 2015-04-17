@@ -57,9 +57,9 @@ public class DbTest extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        Log.w(BookDbHelper.class.getName(), "Upgrading database from version "
-                + oldVersion + " to " + newVersion
-                + ", which will destroy all old data");
+       // Log.w(BookDbHelper.class.getName(), "Upgrading database from version "
+           //     + oldVersion + " to " + newVersion
+              //  + ", which will destroy all old data");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
@@ -90,7 +90,7 @@ public class DbTest extends SQLiteOpenHelper {
                 data.add(bo);
             }while(cursor.moveToNext());
         }
-
+        cursor.close();
         return data;
     }
     public boolean deleteHardCode(Book book) {
@@ -98,6 +98,25 @@ public class DbTest extends SQLiteOpenHelper {
         String idBook = book.getId();
         db.delete(TABLE_NAME, COLUMN_IDBOOK  + "= '" + idBook + "'", null);
         return true;
+    }
+
+    public boolean checkOnDb(Book book){
+        String selectQuery= "SELECT * FROM "+ BookDB.BooksEntry.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String idBook = book.getId();
+        Cursor cursor= db.rawQuery(selectQuery, null);
+        ArrayList<Book> data=new ArrayList<Book>();
+        if(cursor.moveToFirst()){
+            do{
+                String bookid= cursor.getString(cursor.getColumnIndex(COLUMN_IDBOOK));
+                if(bookid.equals(idBook)){
+                    cursor.close();
+                    return true;
+                }
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return false;
     }
    /*     String idDb;
         String sQuery= "SELECT "+  COLUMN_IDBOOK + " FROM "+ TABLE_NAME;

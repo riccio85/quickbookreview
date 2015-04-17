@@ -23,8 +23,8 @@ public class BookDB {
                 BooksEntry.COLUMN_ISBNS + "TEXT," +
                 BooksEntry.COLUMN_PRICE + "TEXT, " +
                 BooksEntry.COLUMN_PAGES + "TEXT, " +
-             //   BooksEntry.COLUMN_RATING + "REAL," +
-               // BooksEntry.COLUMN_IMAGE + "BLOB, " +
+                //   BooksEntry.COLUMN_RATING + "REAL," +
+                // BooksEntry.COLUMN_IMAGE + "BLOB, " +
                 ");";
 
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE);
@@ -53,7 +53,8 @@ public class BookDB {
         public static String COLUMN_ISBNS="isbns";
         public static String COLUMN_PRICE="subjects";
         public static String COLUMN_BUY="buyLink";
-      //  public static String COLUMN_RATING="rating";
+
+        //  public static String COLUMN_RATING="rating";
 
     }
 

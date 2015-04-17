@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -20,9 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
 import app.com.example.rihanna.abookfinder.db.*;
 import app.com.example.rihanna.abookfinder.utils.*;
 
@@ -79,36 +78,31 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                 ratingBar.setRating(5);
             }else {ratingBar.setRating(viewBook.getRating());}
         }
-      return rootView;
+        return rootView;
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.saveButton:
-                if(book!=null) {
-                    // getActivity().setContentView(R.layout.saved_books);
-                /*   SavedBooks fragment = new SavedBooks();
-                    final Bundle bundle = new Bundle();
-                    bundle.putParcelable("Book",book);
-                    Log.i("BUNDLE", bundle.toString());
-                    fragment.setArguments(bundle);
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .add(R.id.container3,fragment)
-                            .commit();*/
-                    ///////////////////////hardcode save/////////////////////////////////////////////////////////////////
-                    DbTest dbHelper=new DbTest(getActivity());
-                    ContentValues values = new ContentValues();
-                    values.put(BookDB.BooksEntry.COLUMN_IDBOOK,book.getId());
-                    values.put(BookDB.BooksEntry.COLUMN_TITLE,book.getTitle());
-                    values.put(BookDB.BooksEntry.COLUMN_AUTHORS,book.getAuthors());
-                    values.put(BookDB.BooksEntry.COLUMN_OVERVIEW,book.getOverview());
-                    values.put(BookDB.BooksEntry.COLUMN_PUBLISHER,book.getPubisher());
-                    values.put(BookDB.BooksEntry.COLUMN_ISBNS,book.getIsbns());
-                    values.put(BookDB.BooksEntry.COLUMN_PRICE,book.getPrice());
-                    values.put(BookDB.BooksEntry.COLUMN_PAGES,book.getPages());
-                    values.put(BookDB.BooksEntry.COLUMN_BUY,book.getBuyLink());
-                    if(dbHelper.insertHardCode(values)){
-                        Toast.makeText(getActivity(), "Book Saved", Toast.LENGTH_LONG).show();}
+                if (book != null) {
+                    DbTest dbHelper = new DbTest(getActivity());
+                    if (!dbHelper.checkOnDb(book)) {
+                        ContentValues values = new ContentValues();
+                        values.put(BookDB.BooksEntry.COLUMN_IDBOOK, book.getId());
+                        values.put(BookDB.BooksEntry.COLUMN_TITLE, book.getTitle());
+                        values.put(BookDB.BooksEntry.COLUMN_AUTHORS, book.getAuthors());
+                        values.put(BookDB.BooksEntry.COLUMN_OVERVIEW, book.getOverview());
+                        values.put(BookDB.BooksEntry.COLUMN_PUBLISHER, book.getPubisher());
+                        values.put(BookDB.BooksEntry.COLUMN_ISBNS, book.getIsbns());
+                        values.put(BookDB.BooksEntry.COLUMN_PRICE, book.getPrice());
+                        values.put(BookDB.BooksEntry.COLUMN_PAGES, book.getPages());
+                        values.put(BookDB.BooksEntry.COLUMN_BUY, book.getBuyLink());
+                        if (dbHelper.insertHardCode(values)) {
+                            Toast.makeText(getActivity(), "Book added to favorites", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(getActivity(), "Book already on favorites", Toast.LENGTH_LONG).show();
+                    }
                 }
                 break;
         }
@@ -125,14 +119,14 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                 actionProvider.setShareIntent(createShareBookDetailIntent());
             }
     }*/
-   private Intent createShareBookDetailIntent() {
-       Intent shareIntent = new Intent(Intent.ACTION_SEND);
-       shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-       shareIntent.setType("text/plain");
-       shareIntent.putExtra(Intent.EXTRA_TEXT, book.getTitle());
-       return shareIntent;
-   }
-   // @Override
+    private Intent createShareBookDetailIntent() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, book.getTitle());
+        return shareIntent;
+    }
+    // @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Get the menu item.
         getActivity().getMenuInflater().inflate(R.menu.menu_detail, menu);
@@ -143,7 +137,7 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
         // view since a call to MenuItem.getActionView() calls
         // onCreateActionView() which uses the backing file name. Omit this
         // line if using the default share history file is desired.
-         actionProvider.setShareIntent(createShareBookDetailIntent());
+        actionProvider.setShareIntent(createShareBookDetailIntent());
         return true;
     }
 

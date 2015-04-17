@@ -1,9 +1,14 @@
 package app.com.example.rihanna.abookfinder;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -26,7 +31,7 @@ import app.com.example.rihanna.abookfinder.db.*;
 import app.com.example.rihanna.abookfinder.utils.*;
 
 public class Favorites extends ActionBarActivity implements AdapterView.OnItemClickListener
-    // implements AdapterView.OnItemClickListener,LoaderManager.LoaderCallbacks<Cursor>
+        // implements AdapterView.OnItemClickListener,LoaderManager.LoaderCallbacks<Cursor>
 {
     ImageButton button;
     ListView listview;
@@ -102,15 +107,6 @@ public class Favorites extends ActionBarActivity implements AdapterView.OnItemCl
             isbns.setText(viewBook.getIsbns());
             price.setText(viewBook.getPrice());
             size.setText(viewBook.getPages());
-      /*  idBook=position;
-        setContentView(R.layout.book_detail_view);
-        BookDetailFragment fragment=new BookDetailFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("id", idBook);
-        fragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container1,fragment)
-                .commit();*/
         }
     }
 
@@ -128,6 +124,7 @@ public class Favorites extends ActionBarActivity implements AdapterView.OnItemCl
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            finish();
             startActivity(new Intent(this,Favorites.class));
             return true;
         }
