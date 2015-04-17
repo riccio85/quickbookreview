@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,8 +17,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import app.com.example.rihanna.abookfinder.db.*;
+import app.com.example.rihanna.abookfinder.utils.*;
 
-import app.com.example.rihanna.abookfinder.utils.BookJsonParse;
 /**
  * Created by Rihanna on 07/04/2015.
  */
@@ -29,9 +28,7 @@ public class SearchService extends IntentService {
     public static final int STATUS_RUNNING = 0;
     public static final int STATUS_FINISHED = 1;
     public static final int STATUS_ERROR = 2;
-
     private static final String TAG = "DownloadService";
-
     public SearchService() {
         super(SearchService.class.getName());
     }
@@ -84,7 +81,7 @@ public class SearchService extends IntentService {
               int nums=BookJsonParse.totalItems(response);
               if(nums==0){    //nessun libro con quel titolo
                   books=new ArrayList<Book>();
-                  books.add(new Book (null,"NO BOOK WITH THIS TITLE",null,null,null,null,null,null,3,null,null));
+                  books.add(new Book (null,"NO BOOK WITH THIS TITLE",null,null,null,null,null,null,3,null,null,null,null));
               } else {
                   books = parseResult(response);
               }

@@ -1,45 +1,33 @@
 package app.com.example.rihanna.abookfinder;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
-import app.com.example.rihanna.abookfinder.db.BookDbHelper;
-import app.com.example.rihanna.abookfinder.db.DbTest;
-import app.com.example.rihanna.abookfinder.utils.BookListViewAdapter;
+import app.com.example.rihanna.abookfinder.db.*;
+import app.com.example.rihanna.abookfinder.utils.*;
 
-
-public class FavoritesActivity extends ActionBarActivity
-          implements AdapterView.OnItemClickListener                                 {
-                              // implements LoaderManager.LoaderCallbacks<Cursor>
+public class Favorites extends ActionBarActivity implements AdapterView.OnItemClickListener
+    // implements AdapterView.OnItemClickListener,LoaderManager.LoaderCallbacks<Cursor>
+{
     ImageButton button;
     ListView listview;
     Book book;
@@ -68,7 +56,7 @@ public class FavoritesActivity extends ActionBarActivity
         }else{
             if (favoriteList != null ) {
                 BookListViewAdapter adapter = new BookListViewAdapter(this,
-                        R.layout.search_view, favoriteList);
+                        R.layout.fragment_book_search, favoriteList);
                 Log.i("adapter creates ", "9");
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(this);
@@ -94,9 +82,9 @@ public class FavoritesActivity extends ActionBarActivity
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if(book!=null){
-                    DbTest dbTest=new DbTest(getApplication());
-                    dbTest.deleteHardCode(book);}
-                   startActivity(new Intent(getApplication(),FavoritesActivity.class));
+                        DbTest dbTest=new DbTest(getApplication());
+                        dbTest.deleteHardCode(book);}
+                    startActivity(new Intent(getApplication(),Favorites.class));
                 }
             });
 
@@ -126,7 +114,7 @@ public class FavoritesActivity extends ActionBarActivity
         }
     }
 
-   @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_favorites, menu);
@@ -140,7 +128,7 @@ public class FavoritesActivity extends ActionBarActivity
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(this,FavoritesActivity.class));
+            startActivity(new Intent(this,Favorites.class));
             return true;
         }
         if(id==android.R.id.home){
@@ -163,4 +151,18 @@ public class FavoritesActivity extends ActionBarActivity
 
     }*/
 
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class PlaceholderFragment extends Fragment {
+
+        public PlaceholderFragment() {
+        }
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
+            return rootView;
+        }
+    }
 }

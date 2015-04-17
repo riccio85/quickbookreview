@@ -1,9 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="app.com.example.rihanna.finalbooksearch.Favorites">
+    tools:context="app.com.example.rihanna.finalbooksearch.BookSearchView">
     <item android:id="@+id/action_settings"
         android:title="@string/title_activity_favorites"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:orderInCategory="100" app:showAsAction="never" />
+
 </menu>

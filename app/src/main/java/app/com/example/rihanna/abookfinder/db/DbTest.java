@@ -22,7 +22,7 @@ public class DbTest extends SQLiteOpenHelper {
     public static final String COLUMN_KEY = "_ID";
     public static final String COLUMN_IDBOOK="idBook";
     public static final String COLUMN_TITLE="title";
-    public static final  String COLUMN_PUBLISHER="publisher";
+    public static final String COLUMN_PUBLISHER="publisher";
     public static final String COLUMN_AUTHORS="authors";
     public static final String COLUMN_PAGES="pages";
     public static final String COLUMN_IMAGE="image";
@@ -36,7 +36,6 @@ public class DbTest extends SQLiteOpenHelper {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
 
     }
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //create a table to hold locations.
@@ -87,16 +86,13 @@ public class DbTest extends SQLiteOpenHelper {
                 String pages=cursor.getString(cursor.getColumnIndex(COLUMN_PAGES));
                 String buy=cursor.getString(cursor.getColumnIndex(COLUMN_BUY));
                 //get the data into array
-                Book bo=new Book(bookid,title,authors,overview,publish,isbns,price,pages,0,buy,null);
+                Book bo=new Book(bookid,title,authors,overview,publish,isbns,price,pages,0,buy,null,null,null);
                 data.add(bo);
             }while(cursor.moveToNext());
         }
 
         return data;
     }
-
-
-
     public boolean deleteHardCode(Book book) {
         SQLiteDatabase db = this.getReadableDatabase();
         String idBook = book.getId();

@@ -32,4 +32,6 @@
 <color name="titlebar">#aaa</color>
 <color name="titlebar_icon_background_pressed">#40E0D0</color>
 <color name="LightYellow">#FFFFE0</color>
+<color name="transparent">#00AABBCC</color>
+
 </resources>

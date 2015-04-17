@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Quick Book Review</string>
+    <string name="app_name">FinalBookSearch</string>
+
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Favorites</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_book_detail_view">Book Detail</string>
+    <string name="title_activity_favorites">Favorites</string>
+
     <string name="overview">Overview</string>
     <string name="published">Published</string>
     <string name="isbn">ISBN</string>
@@ -15,10 +18,12 @@
     <string name="action_share">Share</string>
     <string name="price">List Price</string>
     <string name="share">share</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_favorites">Favorites</string>
     <string name="buy_link">Buy Link</string>
+    <string name="preview_link">Preview Link</string>
+    <string name="title_activity_book_detail">BookDetailActivity</string>
+    <string name="title_activity_search_book">SearchBookActivity</string>
 
 
 </resources>

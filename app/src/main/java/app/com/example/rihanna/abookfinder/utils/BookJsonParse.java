@@ -1,32 +1,31 @@
 package app.com.example.rihanna.abookfinder.utils;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.widget.Toast;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.*;
-import android.util.Log;
-import android.widget.Toast;
+
 import app.com.example.rihanna.abookfinder.Book;
-import app.com.example.rihanna.abookfinder.R;
 
 public class BookJsonParse {
-    public static int totalItems(String jsonStr)throws JSONException{
+
+    public static ArrayList<Book> bookList;
+
+    public static int totalItems(String jsonStr)throws JSONException {
         JSONObject booksJson = (JSONObject) new JSONObject(jsonStr);
         int items = booksJson.getInt("totalItems");
         return items;
     }
-    public static  ArrayList<Book> bookList;
 	    public static ArrayList<Book> getBooksDataFromJson(String jsonStr)
                 throws JSONException {
-            Log.i("json :" + jsonStr, "100");
             ArrayList<Book> searchRlt = new ArrayList<Book>();
 //These are the names of the JSON objects that need to be extracted.
             final String KIND = "books#volumes";
@@ -43,7 +42,6 @@ public class BookJsonParse {
             final String SMALL_IMAGE="smallThumbnail";
             final String BIG_IMAGE="thumbnail";
             final String PAGES = "pageCount";
-            final String SUB_TITLE="subtitle";
             final String SALE_INFO="saleInfo";
             final String SALEABILITY="saleability";
             final String LIST_PRICE="listPrice";
@@ -54,6 +52,7 @@ public class BookJsonParse {
             final String ISBN_ID="identifier";
             final String RATING= "averageRating";
             final String BUY_LINK="buyLink";
+            final String PREV_LINK="previewLink";
 
             if (isJSONValid(jsonStr)) {
                 JSONObject booksJson = (JSONObject) new JSONObject(jsonStr);
@@ -98,10 +97,17 @@ public class BookJsonParse {
                            description_b=volInfo.getString(DESCRIPTION);
                         }catch(Exception e){}
 
-                       JSONObject image=volInfo.getJSONObject(IMAGE_LINK);
+               JSONObject image=volInfo.getJSONObject(IMAGE_LINK);
+               String previewLink="";
+                    try{
+                        previewLink=volInfo.getString(PREV_LINK);
+                    }catch(Exception e){}
+               String smallIM="";
+               String bigIM="";
                        Bitmap bitmap=null;
                        try{
-                           String smallIM=image.getString(SMALL_IMAGE);
+                           smallIM=image.getString(SMALL_IMAGE);
+                           bigIM=image.getString(BIG_IMAGE);
                            bitmap=getBitmapFromURL(smallIM);
                        }catch(Exception e){}
                String isbn="";
@@ -115,7 +121,9 @@ public class BookJsonParse {
                      }catch(Exception e){}
 
                String price="";
+      /*Google api doesn't work for buy link"
                String buylink="";
+
                    try{
                        JSONObject saleInfo=bookInfo.getJSONObject(SALE_INFO);
                        String forSale=saleInfo.getString(SALEABILITY);
@@ -129,15 +137,18 @@ public class BookJsonParse {
                            }catch(Exception e){}
                        }else{
                        price="NOT_FOR_SALE";}
-                    }catch(Exception e){}
+                    }catch(Exception e){}*/
  /* Create the book and add it to the arraylist*/
-                 bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,isbn,price,pages_b,rates,buylink, bitmap));
+                 bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,
+                                isbn,price,pages_b,rates,previewLink, bitmap,smallIM,bigIM));
               }
+               // bookList.clear();
                 bookList=bookL;
                 return bookL;
              } else {
 /* If it is not possible to parse the json turns an arraylist with size 0 */
             ArrayList<Book> bookL = new ArrayList<Book>();
+           // bookList.clear();
             bookList=bookL;
             return bookL;
             }

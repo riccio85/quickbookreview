@@ -2,12 +2,9 @@ package app.com.example.rihanna.abookfinder.db;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 /**
@@ -22,7 +19,7 @@ public class BooksContentProvider extends ContentProvider {
     private static final String AUTHORITY = "app.com.example.rihanna.abookfinder.provider";
     // create content URIs from the authority by appending path to database table
     public static final Uri CONTENT_URI =
-            Uri.parse("content://" + AUTHORITY + "/"+ BookDB.BooksEntry.TABLE_NAME);
+            Uri.parse("content://" + AUTHORITY + "/" + BookDB.BooksEntry.TABLE_NAME);
 
     // a content URI pattern matches content URIs using wildcard characters:
     // *: Matches a string of any valid characters of any length.

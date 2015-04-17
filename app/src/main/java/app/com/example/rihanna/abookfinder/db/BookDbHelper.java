@@ -1,16 +1,8 @@
 package app.com.example.rihanna.abookfinder.db;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
-import android.util.Log;
-
-import java.util.ArrayList;
-
-import app.com.example.rihanna.abookfinder.Book;
 
 /**
  * Created by Rihanna on 09/04/2015.

@@ -1,8 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favorites_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context="app.com.example.rihanna.abookfinder.FavoritesActivity"
     tools:ignore="MergeRootFrame" >
+
     <ListView
         android:id="@+id/listFavorites"
         android:layout_width="match_parent"
@@ -12,4 +15,4 @@
         android:scrollbars="vertical">
     </ListView>
 
-</FrameLayout>
+ </FrameLayout>

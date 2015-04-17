@@ -4,19 +4,15 @@ package app.com.example.rihanna.abookfinder;
 import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
 import java.util.ArrayList;
+
 public class Book implements Parcelable {
    public boolean isFullBook;
-
     Book book;
-
     private String id;
     private String title;
-    private  String publisher;
+    private String publisher;
     private String author;
     private String pages;
     private String overview;
@@ -25,11 +21,12 @@ public class Book implements Parcelable {
     private float rating;
     private String buyLink;
     private Bitmap imageId;
-
-
+    private String smallThumb;
+    private String bigThumb;
     private ArrayList<Book> bookList;
 
-    public Book(String id,String title,String author,String descrp,String publish,String isbn,String price,String pages,float rating,String buyLink,Bitmap image){
+    public Book(String id,String title,String author,String descrp,String publish,String isbn,String price,
+                String pages,float rating,String buyLink,Bitmap image,String smallThumb,String bigThumb){
 
         this.id=id;
         this.title=title;
@@ -42,6 +39,8 @@ public class Book implements Parcelable {
         this.rating=rating;
         this.buyLink=buyLink;
         this.imageId=image;
+        this.smallThumb=smallThumb;
+        this.bigThumb=bigThumb;
     }
 
     public Book(Book bookToParcel) {
@@ -107,6 +106,19 @@ public class Book implements Parcelable {
     public void setPrice(String price) {
         this.price = price;
     }
+    public String getBigThumb() {
+        return bigThumb;
+    }
+    public void setBigThumb(String bigThumb) {
+        this.bigThumb = bigThumb;
+    }
+    public String getSmallThumb() {
+        return smallThumb;
+    }
+    public void setSmallThumb(String smallThumb) {
+        this.smallThumb = smallThumb;
+    }
+
 
     @Override
     public int describeContents() {
