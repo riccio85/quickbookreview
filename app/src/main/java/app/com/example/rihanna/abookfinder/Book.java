@@ -23,7 +23,12 @@ public class Book implements Parcelable {
     private Bitmap imageId;
     private String smallThumb;
     private String bigThumb;
+    private String message;
     private ArrayList<Book> bookList;
+
+    public Book(String message){
+        this.message=message;
+    }
 
     public Book(String id,String title,String author,String descrp,String publish,String isbn,String price,
                 String pages,float rating,String buyLink,Bitmap image,String smallThumb,String bigThumb){
@@ -118,7 +123,18 @@ public class Book implements Parcelable {
     public void setSmallThumb(String smallThumb) {
         this.smallThumb = smallThumb;
     }
-
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    public String getBuyLink() {
+        return buyLink;
+    }
+    public void setBuyLink(String buyLink) {
+        this.buyLink = buyLink;
+    }
 
     @Override
     public int describeContents() {
@@ -145,13 +161,7 @@ public class Book implements Parcelable {
     private Book(Parcel in) {
       book = (Book) in.readValue(null);
     }
-    public String getBuyLink() {
-        return buyLink;
-    }
 
-    public void setBuyLink(String buyLink) {
-        this.buyLink = buyLink;
-    }
 
 
 }

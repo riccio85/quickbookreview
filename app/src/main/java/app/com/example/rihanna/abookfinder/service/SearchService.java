@@ -1,4 +1,4 @@
-package app.com.example.rihanna.abookfinder;
+package app.com.example.rihanna.abookfinder.service;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
-
+import android.widget.Toast;
 import org.json.JSONException;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +16,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import app.com.example.rihanna.abookfinder.db.*;
+
+import app.com.example.rihanna.abookfinder.Book;
 import app.com.example.rihanna.abookfinder.utils.*;
 
 /**
@@ -44,7 +44,6 @@ public class SearchService extends IntentService {
         if (!TextUtils.isEmpty(url)) {
             /* Update UI: Download Service is Running */
             receiver.send(STATUS_RUNNING, Bundle.EMPTY);
-
             try {
                 ArrayList<Book> results = downloadData(url);
                 Log.i("done results", "300");
@@ -68,10 +67,18 @@ public class SearchService extends IntentService {
         InputStream inputStream = null;
         HttpURLConnection urlConnection = null;
         URL url = new URL(requestUrl);
-        urlConnection = (HttpURLConnection) url.openConnection();
-        urlConnection.setRequestProperty("Content-Type", "application/json");
-        urlConnection.setRequestProperty("Accept", "application/json");
-        urlConnection.setRequestMethod("GET");
+        try {
+            urlConnection = (HttpURLConnection) url.openConnection();
+            // set the connection timeout to 5 seconds and the read timeout to 10 seconds
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Accept", "application/json");
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setConnectTimeout(5000);
+            urlConnection.setReadTimeout(10000);
+        } catch (java.net.SocketTimeoutException e){
+            Toast toast = Toast.makeText(getApplication(), "Search is taking to much time. Retry!!!", Toast.LENGTH_SHORT);
+            return books;
+                   }
         int statusCode = urlConnection.getResponseCode();
         /* 200 represents HTTP OK */
         if (statusCode == 200) {
@@ -81,7 +88,7 @@ public class SearchService extends IntentService {
               int nums=BookJsonParse.totalItems(response);
               if(nums==0){    //nessun libro con quel titolo
                   books=new ArrayList<Book>();
-                  books.add(new Book (null,"NO BOOK WITH THIS TITLE",null,null,null,null,null,null,3,null,null,null,null));
+                  books.add(new Book ("NO BOOK WITH THIS TITLE"));
               } else {
                   books = parseResult(response);
               }

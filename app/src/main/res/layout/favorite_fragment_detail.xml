@@ -9,7 +9,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0px"
@@ -26,6 +25,7 @@
                     <ImageView
                         android:id="@+id/s_thumbnail"
                         android:layout_width="80dp"
+                        android:clickable="true"
                         android:layout_height="100dp"
                         android:paddingLeft="3dp" />
                     <LinearLayout
@@ -42,7 +42,7 @@
                             android:gravity="center"
                             android:paddingRight="3dp"/>
                         <TextView
-                            android:id="@+id/s_creators"
+                            android:id="@+id/s_authors"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="3dp"
@@ -98,6 +98,17 @@
                             style="@style/BookDetailContent"
                             android:id="@+id/s_size" />
                     </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/BookDetailSubHeading"
+                            android:text="@string/preview_link" />
+                        <TextView
+                            style="@style/BookDetailContent"
+                            android:autoLink="web"
+                            android:clickable="true"
+                            android:linksClickable="true"
+                            android:id="@+id/s_buyLink" />
+                    </TableRow>
                 </TableLayout>
 
             </LinearLayout>
@@ -113,4 +124,5 @@
             android:layout_gravity="center"
             />
     </LinearLayout>
+
 </ScrollView>

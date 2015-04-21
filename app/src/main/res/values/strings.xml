@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalBookSearch</string>
+    <string name="app_name">Quick Book Review</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -24,6 +24,7 @@
     <string name="preview_link">Preview Link</string>
     <string name="title_activity_book_detail">BookDetailActivity</string>
     <string name="title_activity_search_book">SearchBookActivity</string>
+    <string name="title_activity_favorite_detail">Favorite Detail</string>
 
 
 </resources>

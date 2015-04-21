@@ -13,7 +13,6 @@ import app.com.example.rihanna.abookfinder.utils.BookJsonParse;
 
 public class BookDetailView extends ActionBarActivity {
     int idSelected;
-    ShareActionProvider actionProvider;
     Book book;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +39,11 @@ public class BookDetailView extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_book_detail, menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-         /* MenuItem menuItem = menu.findItem(R.id.action_share);
-        actionProvider =(ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-      if (book != null) {
-            actionProvider.setShareIntent(createShareBookDetailIntent());
-        }*/
         return true;
     }
-    /*
-        private Intent createShareBookDetailIntent() {
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, book.getTitle());
-            return shareIntent;
-        }*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(this,Favorites.class));
             return true;
@@ -68,10 +52,6 @@ public class BookDetailView extends ActionBarActivity {
             super.onBackPressed();
             return true;
         }
-    /*    if(id==R.id.action_share){
-            if (book != null) {
-                actionProvider.setShareIntent(createShareBookDetailIntent());}
-        }*/
         return super.onOptionsItemSelected(item);
     }
 

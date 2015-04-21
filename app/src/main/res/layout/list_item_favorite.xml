@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:background="@color/LightYellow">
+
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/library" />
+
+        <TextView
+            android:id="@+id/bookTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_alignTop="@+id/cover"
+            android:layout_toRightOf="@+id/cover"
+
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="A List item title"/>
+        <TextView
+            android:id="@+id/authors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cover"
+
+            android:layout_margin="2dp"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@+id/bookTitle"
+            android:text="The List item description"
+            android:textSize="14sp"
+            android:textAppearance="?android:textAppearanceSmall"/>
+        <TextView
+            android:id="@+id/publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cover"
+            android:layout_below="@+id/authors"
+            android:layout_margin="2dp"
+
+            android:layout_marginRight="25dp"
+            android:text="The List item description"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+</RelativeLayout>

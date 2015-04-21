@@ -2,11 +2,9 @@ package app.com.example.rihanna.abookfinder.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -62,9 +60,8 @@ public class BookJsonParse {
                     JSONObject bookInfo = booksArray.getJSONObject(i);
                     String id_b = bookInfo.getString(ID);
                     JSONObject volInfo = bookInfo.getJSONObject(VOLUME_INFO);
-   /*Book Volume info */
-                        String title_b = volInfo.getString(TITLE);
-                        String authours_b="";
+                    String title_b = volInfo.getString(TITLE);
+                    String authours_b="";
                        try{
                            JSONArray auth = volInfo.getJSONArray(AUTHORS);
                            authours_b=auth.toString();
@@ -80,7 +77,7 @@ public class BookJsonParse {
                                     if(volInfo.getString(PUBLISH_DATE)!=null){
                                         publisher_b=volInfo.getString(PUBLISH_DATE);} else {publisher_b="---"; }
                                 }catch(Exception e){}
-                     String publish=publisher_b+publishDate;
+               String publish=publisher_b+publishDate;
 
                String pages_b="";
                                try{
@@ -91,12 +88,10 @@ public class BookJsonParse {
                                 try{
                                     rates=volInfo.getLong(RATING);
                                 }catch(Exception e){}
-
                String description_b="";
                         try{
                            description_b=volInfo.getString(DESCRIPTION);
                         }catch(Exception e){}
-
                JSONObject image=volInfo.getJSONObject(IMAGE_LINK);
                String previewLink="";
                     try{
@@ -119,11 +114,9 @@ public class BookJsonParse {
                                 isbn=isbnIdt+"  "+isbn;
                          }
                      }catch(Exception e){}
-
                String price="";
-      /*Google api doesn't work for buy link"
+ /*Google api doesn't work for buy link"
                String buylink="";
-
                    try{
                        JSONObject saleInfo=bookInfo.getJSONObject(SALE_INFO);
                        String forSale=saleInfo.getString(SALEABILITY);
@@ -142,13 +135,11 @@ public class BookJsonParse {
                  bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,
                                 isbn,price,pages_b,rates,previewLink, bitmap,smallIM,bigIM));
               }
-               // bookList.clear();
                 bookList=bookL;
                 return bookL;
              } else {
 /* If it is not possible to parse the json turns an arraylist with size 0 */
             ArrayList<Book> bookL = new ArrayList<Book>();
-           // bookList.clear();
             bookList=bookL;
             return bookL;
             }

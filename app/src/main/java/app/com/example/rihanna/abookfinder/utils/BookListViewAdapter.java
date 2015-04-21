@@ -21,7 +21,6 @@ public class BookListViewAdapter extends ArrayAdapter<Book> {
         super(context, resourceId, items);
         this.context = context;
     }
-	
 	 private class ViewHolder {
 	        ImageView imageView;
 	        TextView title;
@@ -55,7 +54,5 @@ public class BookListViewAdapter extends ArrayAdapter<Book> {
             Drawable d = new BitmapDrawable(context.getResources(),bitmap);
 	        holder.imageView.setImageDrawable(d);
 	        return convertView;
-	    } 
-
-	
+	    }
 }

@@ -33,8 +33,6 @@ public class BookSearchView extends ActionBarActivity
                 bundle2.putInt("idBook",0);
               //  bundle2.putBoolean("mTwoPane",true);
                 fragment2.setArguments(bundle2);
-                Toast toast = Toast.makeText(this, "Two pane Retry!!!", Toast.LENGTH_SHORT);
-                toast.show();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.detail_container, fragment2, DETAILFRAGMENT_TAG)
                         .commit();
@@ -62,13 +60,12 @@ public class BookSearchView extends ActionBarActivity
         getSupportActionBar().setHomeButtonEnabled(true);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(this,Favorites.class));
+           startActivity(new Intent(this,Favorites.class));
             return true;
         }
         if(id==android.R.id.home){
@@ -77,5 +74,12 @@ public class BookSearchView extends ActionBarActivity
         }
         return super.onOptionsItemSelected(item);
     }
+/* Case tablet methods to call*/
+     public boolean ismTwoPane() {
+         return mTwoPane;
+     }
+     public void setmTwoPane(boolean mTwoPane) {
+         this.mTwoPane = mTwoPane;
+     }
 
 }

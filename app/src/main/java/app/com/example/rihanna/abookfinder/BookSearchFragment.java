@@ -19,7 +19,8 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import app.com.example.rihanna.abookfinder.db.*;
+import app.com.example.rihanna.abookfinder.service.SearchResultReceiver;
+import app.com.example.rihanna.abookfinder.service.SearchService;
 import app.com.example.rihanna.abookfinder.utils.*;
 
 /**
@@ -86,8 +87,9 @@ public class BookSearchFragment extends Fragment
                     if(bookList.size()==0||bookList==null){
                         Toast toast = Toast.makeText(getActivity(), "Search has no books for you with. Retry!!!", Toast.LENGTH_SHORT);
                         toast.show();
-                    }else if(bookList.size()==1 && bookList.get(0).getTitle().equals("NO BOOK WITH THIS TITLE")){
-                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you with. Retry!!!", Toast.LENGTH_SHORT);
+                        /*case the search has no result */
+                    }else if(bookList.size()==1 && bookList.get(0).getMessage().equals("NO BOOK WITH THIS TITLE")){
+                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you.Retry!!!", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                     if (bookList != null ) {

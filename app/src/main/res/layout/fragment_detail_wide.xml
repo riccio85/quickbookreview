@@ -1,16 +1,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="app.com.example.rihanna.finalbooksearch.BookDetailFragment"
     android:id="@+id/ScrollDetail"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/LightYellow"
-    >
-<LinearLayout
-        android:name="@+id/cont"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="@+id/s_cont"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0px"
@@ -20,16 +18,14 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:id="@+id/book_header_layout"
+                    android:id="@+id/s_book_header_layout"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="7dp">
                     <ImageView
-                        android:id="@+id/thumbnail"
+                        android:id="@+id/s_thumbnail"
                         android:layout_width="80dp"
                         android:layout_height="100dp"
-                        android:clickable="true"
-                        android:onClick="clickImage"
                         android:paddingLeft="3dp" />
                     <LinearLayout
 
@@ -37,25 +33,15 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <RatingBar
-                            style="?android:attr/ratingBarStyleSmall"
-                            android:id="@+id/rating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:paddingTop="3dp"
-                            android:paddingBottom="3dp"
-                            android:numStars="5"
-                            android:stepSize="0.5" />
                         <TextView
-                            android:id="@+id/title"
+                            android:id="@+id/s_title"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:gravity="center"
                             android:paddingRight="3dp"/>
                         <TextView
-                            android:id="@+id/creators"
+                            android:id="@+id/s_creators"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="3dp"
@@ -66,61 +52,50 @@
                     </LinearLayout>
                 </LinearLayout>
                 <TableLayout
-                    android:id="@+id/detail_table_layout"
+                    android:id="@+id/s_detail_table_layout"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:shrinkColumns="1">
                     <TableRow>
                         <TextView
-                            style="@style/BookDetailSubHeading"
-                            android:text="@string/overview" />
+
+                            android:text="overview" />
                         <TextView
-                            style="@style/BookDetailContent"
-                            android:id="@+id/overview" />
+
+                            android:id="@+id/s_overview" />
                     </TableRow>
                     <TableRow
-                        android:id="@+id/published_row">
+                        android:id="@+id/s_published_row">
                         <TextView
-                            style="@style/BookDetailSubHeading"
-                            android:text="@string/published" />
+
+                            android:text="published" />
                         <TextView
-                            style="@style/BookDetailContent"
-                            android:id="@+id/published" />
+
+                            android:id="@+id/s_published" />
                     </TableRow>
                     <TableRow>
                         <TextView
-                            style="@style/BookDetailSubHeading"
-                            android:text="@string/isbn" />
+
+                            android:text="/isbn" />
                         <TextView
-                            style="@style/BookDetailContent"
-                            android:id="@+id/isbns" />
+
+                            android:id="@+id/s_isbns" />
                     </TableRow>
                     <TableRow>
                         <TextView
-                            style="@style/BookDetailSubHeading"
-                            android:text="@string/price" />
+
+                            android:text="price" />
                         <TextView
-                            style="@style/BookDetailContent"
-                            android:id="@+id/price" />
+
+                            android:id="@+id/s_price" />
                     </TableRow>
                     <TableRow>
                         <TextView
-                            style="@style/BookDetailSubHeading"
-                            android:text="@string/size" />
+
+                            android:text="size" />
                         <TextView
-                            style="@style/BookDetailContent"
-                            android:id="@+id/size" />
-                    </TableRow>
-                    <TableRow>
-                        <TextView
-                            style="@style/BookDetailSubHeading"
-                            android:text="@string/preview_link" />
-                        <TextView
-                            style="@style/BookDetailContent"
-                            android:autoLink="web"
-                            android:clickable="true"
-                            android:linksClickable="true"
-                            android:id="@+id/buyLink" />
+
+                            android:id="@+id/s_size" />
                     </TableRow>
                 </TableLayout>
 
@@ -128,14 +103,12 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/saveButton"
+            android:id="@+id/deleteButton"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:clickable="true"
-            android:text="@string/save"
-            android:background="@drawable/save"
+            android:text="save"
             android:layout_gravity="center"
             />
     </LinearLayout>
-
 </ScrollView>
