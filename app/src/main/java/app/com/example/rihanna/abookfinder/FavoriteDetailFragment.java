@@ -23,9 +23,6 @@ import android.widget.Toast;
 
 import app.com.example.rihanna.abookfinder.db.BookContract;
 
-/**
- * Created by Rihanna on 20/04/2015.
- */
 public class FavoriteDetailFragment extends Fragment
         implements LoaderManager.LoaderCallbacks<Cursor>,View.OnClickListener {
 

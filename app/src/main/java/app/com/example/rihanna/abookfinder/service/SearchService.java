@@ -20,9 +20,7 @@ import java.util.ArrayList;
 import app.com.example.rihanna.abookfinder.Book;
 import app.com.example.rihanna.abookfinder.utils.*;
 
-/**
- * Created by Rihanna on 07/04/2015.
- */
+
 public class SearchService extends IntentService {
 
     public static final int STATUS_RUNNING = 0;

@@ -28,7 +28,7 @@ public class Favorites extends ActionBarActivity implements FavoriteListFragment
             }
         } else {
             mTwoPane = false;
-          //  getSupportActionBar().setElevation(0f);
+            getSupportActionBar().setElevation(0f);
         }
     }
     @Override
