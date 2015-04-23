@@ -5,3 +5,6 @@
 
 	Problem that solves  
 This app is about searching quickly for a book using a book title, author, isban etc... See the book review and ratings, if available see the list price and helps to save a list of books, a list you recommend to yourself to read or to get soon, and share it to freinds.
+
+
+
