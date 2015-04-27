@@ -29,7 +29,6 @@ public class FavoriteListFragment extends Fragment implements LoaderManager.Load
     private FavoriteAdapter mAdapter;
     private ListView mListView;
     private int mPosition = ListView.INVALID_POSITION;
-
     private static final String SELECTED_KEY = "selected_position";
     private static final int FAVORITE_LOADER = 0;
 
@@ -90,7 +89,7 @@ public class FavoriteListFragment extends Fragment implements LoaderManager.Load
         mAdapter = new FavoriteAdapter(getActivity(), null, 0);
 
         View rootView = inflater.inflate(R.layout.fragment_favorite_list, container, false);
-        mListView = (ListView) rootView.findViewById(R.id.listview_forecast);
+        mListView = (ListView) rootView.findViewById(R.id.listview);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

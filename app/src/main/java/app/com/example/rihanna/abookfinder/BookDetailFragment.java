@@ -38,7 +38,6 @@ import app.com.example.rihanna.abookfinder.utils.*;
 public class BookDetailFragment extends Fragment implements View.OnClickListener
 {
     int id;
-    ShareActionProvider actionProvider;
     Book book;
     ImageButton button;
     ImageView image;
@@ -192,10 +191,6 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             startActivity(new Intent(getActivity(), Favorites.class));
-            return true;
-        }
-        if (id==R.id.action_share) {
-          ///////////////////////////////////////////////////////////
             return true;
         }
         return super.onOptionsItemSelected(item);

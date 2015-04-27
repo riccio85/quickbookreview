@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2011 Jonas Bengtsson
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
 
 <resources>
 <color name="book_normal">#429900</color>
 <color name="book_unknown">#0000</color>
-<!--color name="book_pending">#fabb00</color-->
 <color name="book_pending">#40E0D0</color>
 <color name="book_late">#e22626</color>
 <color name="count">#1af</color>
@@ -32,6 +16,6 @@
 <color name="titlebar">#aaa</color>
 <color name="titlebar_icon_background_pressed">#40E0D0</color>
 <color name="LightYellow">#FFFFE0</color>
-<color name="transparent">#00AABBCC</color>
+<color name="transparent">#0000</color>
 
 </resources>

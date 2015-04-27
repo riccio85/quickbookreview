@@ -52,8 +52,6 @@ public class FavoriteDetailFragment extends Fragment
             BookContract.BookEntry.COLUMN_BIGIM
     };
 
-    // These indices are tied to DETAIL_COLUMNS.  If DETAIL_COLUMNS changes, these
-    // must change.
     public static final int COL_COLUMN_KEY = 0;
     public static final int COL_COLUMN_IDBOOK=1;
     public static final int COL_COLUMN_TITLE=2;
@@ -130,11 +128,11 @@ public class FavoriteDetailFragment extends Fragment
         MenuItem menuItem = menu.findItem(R.id.action_share);
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
         if (bookTitle != null) {
-            mShareActionProvider.setShareIntent(createShareForecastIntent());
+            mShareActionProvider.setShareIntent(createShareIntent());
         }
     }
 
-    private Intent createShareForecastIntent() {
+    private Intent createShareIntent() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");
@@ -187,7 +185,7 @@ public class FavoriteDetailFragment extends Fragment
             price.setText(data.getString(COL_COLUMN_PRICE));
             size.setText(data.getString(COL_COLUMN_PAGES));
             if (mShareActionProvider != null) {
-                mShareActionProvider.setShareIntent(createShareForecastIntent());
+                mShareActionProvider.setShareIntent(createShareIntent());
             }
         }
     }

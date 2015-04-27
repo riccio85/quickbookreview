@@ -10,6 +10,7 @@ tools:context="app.com.example.rihanna.finalbooksearch.BookSearchFragment">
     android:layout_height="match_parent"
     android:fadingEdge="vertical"
     android:fadingEdgeLength="10dp"
+    android:choiceMode="singleChoice"
     android:scrollbars="vertical"
     android:background="@color/LightYellow" />
 <ProgressBar

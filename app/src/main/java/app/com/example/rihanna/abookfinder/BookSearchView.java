@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class BookSearchView extends ActionBarActivity
              {
     private boolean mTwoPane;
-    private static final String DETAILFRAGMENT_TAG = "DFTAG";
+    private static final String DETAILSEARCH_TAG = "SEARCHTAG";
     String book;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,9 @@ public class BookSearchView extends ActionBarActivity
                 BookDetailFragment fragment2=new  BookDetailFragment();
                 Bundle bundle2=new Bundle();
                 bundle2.putInt("idBook",0);
-              //  bundle2.putBoolean("mTwoPane",true);
                 fragment2.setArguments(bundle2);
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.detail_container, fragment2, DETAILFRAGMENT_TAG)
+                        .replace(R.id.detail_container, fragment2, DETAILSEARCH_TAG)
                         .commit();
         } else {
                 mTwoPane = false;
@@ -75,7 +74,7 @@ public class BookSearchView extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 /* Case tablet methods to call*/
-     public boolean ismTwoPane() {
+     public  boolean ismTwoPane() {
          return mTwoPane;
      }
      public void setmTwoPane(boolean mTwoPane) {

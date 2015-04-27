@@ -15,16 +15,11 @@ import app.com.example.rihanna.abookfinder.R;
  * Created by Rihanna on 20/04/2015.
  */
 public class FavoriteAdapter extends CursorAdapter {
+    private LayoutInflater mInflater;
+    private int mPositionSelected;
+    private Context context;
 
-    private static final int VIEW_TYPE_COUNT = 2;
-    private static final int VIEW_TYPE_TODAY = 0;
-    private static final int VIEW_TYPE_FUTURE_DAY = 1;
-    // Flag to determine if we want to use a separate view for "today".
-    private boolean mUseTodayLayout = true;
 
-    /**
-     * Cache of the children views for a forecast list item.
-     */
     public static class ViewHolder {
         public final ImageView bookCover;
         public final TextView title;
@@ -43,6 +38,12 @@ public class FavoriteAdapter extends CursorAdapter {
 
     public FavoriteAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
+        mContext=context;
+        mInflater=LayoutInflater.from(context);
+    }
+
+    public void setPositionSelected(int positionSelected) {
+        mPositionSelected = positionSelected;
     }
 
     @Override
@@ -72,17 +73,5 @@ public class FavoriteAdapter extends CursorAdapter {
         // viewHolder.pages.setText(publisher);
     }
 
-    //  public void setUseTodayLayout(boolean useTodayLayout) {
-    //       mUseTodayLayout = useTodayLayout;
-    //  }
 
-  /*  @Override
-    public int getItemViewType(int position) {
-        return (position == 0 && mUseTodayLayout) ? VIEW_TYPE_TODAY : VIEW_TYPE_FUTURE_DAY;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return VIEW_TYPE_COUNT;
-    }*/
 }

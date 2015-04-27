@@ -13,23 +13,27 @@ import app.com.example.rihanna.abookfinder.db.*;
 public class Favorites extends ActionBarActivity implements FavoriteListFragment.Callback {
     private final String LOG_TAG = Favorites.class.getSimpleName();
     private static final String DETAILFRAGMENT_TAG = "DFTAG";
-    private boolean mTwoPane;
+    private static boolean mTwoPane;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_list);
 
-        if (findViewById(R.id.detail_container) != null) {
+        if (findViewById(R.id.detailed_book) != null) {
             mTwoPane = true;
             if (savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.detail_container, new FavoriteDetailFragment(), DETAILFRAGMENT_TAG)
+                        .replace(R.id.detailed_book, new FavoriteDetailFragment(), DETAILFRAGMENT_TAG)
                         .commit();
             }
         } else {
             mTwoPane = false;
             getSupportActionBar().setElevation(0f);
         }
+        FavoriteListFragment frag=((FavoriteListFragment)getSupportFragmentManager()
+                        .findFragmentById(R.id.fragment_favorites));
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
