@@ -6,6 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+
 import java.util.ArrayList;
 import app.com.example.rihanna.abookfinder.db.*;
 import app.com.example.rihanna.abookfinder.utils.BookJsonParse;
@@ -23,6 +26,7 @@ public class BookDetailView extends ActionBarActivity {
 
         ArrayList<Book> allBooks = BookJsonParse.getArrayListBook();
         Book viewBook=allBooks.get(idSelected);
+
         BookDetailFragment fragment=new BookDetailFragment();
         Bundle bundle=new Bundle();
         bundle.putInt("idBook",idSelected);

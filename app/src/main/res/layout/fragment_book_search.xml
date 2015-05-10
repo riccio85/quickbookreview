@@ -2,8 +2,9 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+android:background="@color/LightYellow"
 tools:context="app.com.example.rihanna.finalbooksearch.BookSearchFragment">
-<!--style="@style/ForecastListStyle"-->
+
 <ListView
     android:id="@+id/listview"
     android:layout_width="match_parent"
@@ -11,8 +12,8 @@ tools:context="app.com.example.rihanna.finalbooksearch.BookSearchFragment">
     android:fadingEdge="vertical"
     android:fadingEdgeLength="10dp"
     android:choiceMode="singleChoice"
-    android:scrollbars="vertical"
-    android:background="@color/LightYellow" />
+    android:scrollbars="vertical"/>
+
 <ProgressBar
     android:id="@+id/pbLoading"
     android:visibility="invisible"

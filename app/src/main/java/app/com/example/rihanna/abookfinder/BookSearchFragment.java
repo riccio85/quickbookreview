@@ -2,6 +2,8 @@ package app.com.example.rihanna.abookfinder;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -45,6 +48,10 @@ public class BookSearchFragment extends Fragment
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_book_search, container, false);
+
+
+
+
            // progressDialog = new ProgressDialog(getActivity(),R.style.TransparentProgressDialog) ;
             bookTitle=getArguments().getString("bookTitle");
             twoPane=getArguments().getBoolean("mTwoPane");
@@ -60,6 +67,7 @@ public class BookSearchFragment extends Fragment
                     .appendQueryParameter(PRINT_TYPE, "books")
                     .build();
             final String url= builtUri.toString();
+
         /* Starting Download Service */
             mReceiver = new SearchResultReceiver(new Handler());
             mReceiver.setReceiver(this);
@@ -75,49 +83,61 @@ public class BookSearchFragment extends Fragment
         public void onReceiveResult(int resultCode, Bundle resultData) throws JSONException {
             switch (resultCode) {
                 case SearchService.STATUS_RUNNING:
-                 // getActivity().setSupportProgressBarIndeterminateVisibility(true
                    progressDialog = ProgressDialog.show(getActivity(), null, "Searching!");
+                /*setting progressdialog dissmisble */
+                   progressDialog.setCancelable(true);
                     break;
                 case SearchService.STATUS_FINISHED:
                 /* Hide progress & extract result from bundle */
-                 //   this.setSupportProgressBarIndeterminateVisibility(false);
                    progressDialog.dismiss();
                    bookList=resultData.getParcelableArrayList("result");
 
                     if(bookList.size()==0||bookList==null){
-                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you with. Retry!!!", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you with. Retry!!!", Toast.LENGTH_LONG);
                         toast.show();
                         /*case the search has no result */
                     }else if(bookList.size()==1 && bookList.get(0).getMessage().equals("NO BOOK WITH THIS TITLE")){
-                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you.Retry!!!", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you.Retry!!!", Toast.LENGTH_LONG);
+                        toast.show();
+                        /*case to much time to serach */
+                    }else if(bookList.size()==1 && bookList.get(0).getMessage().equals("SEARCH TAKES TO MUCH TIME")){
+                        Toast toast = Toast.makeText(getActivity(), "Search is taking to much time.Retry!!!", Toast.LENGTH_LONG);
                         toast.show();
                     }
+                 /* Update ListView with result */
                     if (bookList != null ) {
                         BookListViewAdapter adapter = new BookListViewAdapter(getActivity(),
                                 R.layout.fragment_book_search, bookList);
                         mListView.setAdapter(adapter);
                        mListView.setOnItemClickListener(this);
                     }
-                /* Update ListView with result */
+
                     break;
                 case SearchService.STATUS_ERROR:
                 /* Handle the error */
                     progressDialog.dismiss();
-                    //String error = resultData.getString(Intent.EXTRA_TEXT);
-                    //Toast.makeText(this, error, Toast.LENGTH_LONG).show();
                     Toast toast = Toast.makeText(getActivity(), "Please go back and put a book!", Toast.LENGTH_SHORT);
                     toast.show();
                     break;
             }
         }
+
         public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
             idBook=position;
             if(!twoPane){
             Intent intent = new Intent(getActivity(), BookDetailView.class);
             intent.putExtra("idBook", position);
-            Log.i("intent on Main with " + idBook, "3");
             startActivity(intent);
             }else{
+
+                /*highlight the selected list item */
+                view.getFocusables(position);
+                view.setSelected(true);
+
+                /*Show the detailed book */
+                FrameLayout frameLT= (FrameLayout)  getActivity().findViewById(R.id.detail_container);
+                frameLT.setVisibility(View.VISIBLE);
+
                 BookDetailFragment fragment2=new  BookDetailFragment();
                 Bundle bundle2=new Bundle();
                 bundle2.putInt("idBook",idBook);
@@ -127,4 +147,5 @@ public class BookSearchFragment extends Fragment
                         .commit();
             }
         }
+
 }

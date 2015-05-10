@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-<color name="book_normal">#429900</color>
-<color name="book_unknown">#0000</color>
-<color name="book_pending">#40E0D0</color>
-<color name="book_late">#e22626</color>
-<color name="count">#1af</color>
-<color name="edit_label">#1af</color>
-<color name="edittext_background">#eee</color>
-<color name="background_pressed">#9bdcff</color>
-<color name="edittext_border">#1af</color>
-<color name="link">#4e7ccc</color>
-<color name="list_section_background">#666</color>
-<color name="list_section_foreground">#fff</color>
-<color name="titlebar">#aaa</color>
-<color name="titlebar_icon_background_pressed">#40E0D0</color>
-<color name="LightYellow">#FFFFE0</color>
-<color name="transparent">#0000</color>
+
+    <color name="book_pending">#40E0D0</color>
+    <color name="LightYellow">#FFFFE0</color>
+    <color name="transparent">#0000</color>
+    <color name="link">#4e7ccc</color>
+    <color name="book_selected">#9FDFDF</color>
 
 </resources>

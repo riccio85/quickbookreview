@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/book_pending</item>
-        <item name="colorPrimaryDark">@color/list_section_background</item>
+        <!--item name="colorPrimaryDark">@color/list_section_background</item-->
     </style>
     <!-- Main activity theme. -->
     <style name="MainTheme" parent="AppTheme">
@@ -12,9 +12,13 @@
 
     <!-- main activity action bar styles -->
     <style name="ActionBar.Solid.NoTitle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="displayOptions">useLogo|showHome</item>
-        <item name="logo">@drawable/logo</item>
+        <!--item name="displayOptions">useLogo|showHome</item-->
+        <!--item name="logo">@drawable/logo</item-->
     </style>
+
+
+
+
 
     <style name="BookDetailSubHeading">
         <item
@@ -43,6 +47,7 @@
             name="android:textColorLink">@color/link</item>
     </style>
 
+
 <!-- to use for personalized animated progress Dialog bar  NOT YET USED -->
     <style name="TransparentProgressDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
@@ -53,5 +58,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
+
 
 </resources>

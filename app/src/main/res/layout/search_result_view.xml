@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/LightYellow">
+    android:background="@drawable/touch_selector">
     <ImageView
         android:id="@+id/bookCover"
         android:layout_width="80dp"

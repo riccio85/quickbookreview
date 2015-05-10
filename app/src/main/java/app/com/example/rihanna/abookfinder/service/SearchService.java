@@ -1,7 +1,10 @@
 package app.com.example.rihanna.abookfinder.service;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
@@ -74,7 +77,8 @@ public class SearchService extends IntentService {
             urlConnection.setConnectTimeout(5000);
             urlConnection.setReadTimeout(10000);
         } catch (java.net.SocketTimeoutException e){
-            Toast toast = Toast.makeText(getApplication(), "Search is taking to much time. Retry!!!", Toast.LENGTH_SHORT);
+            books=new ArrayList<Book>();
+            books.add(new Book ("SEARCH TAKES TO MUCH TIME"));
             return books;
                    }
         int statusCode = urlConnection.getResponseCode();
@@ -84,7 +88,7 @@ public class SearchService extends IntentService {
             String response = convertInputStreamToString(inputStream);
           try {
               int nums=BookJsonParse.totalItems(response);
-              if(nums==0){    //nessun libro con quel titolo
+              if(nums==0){    //there is no book wih this title
                   books=new ArrayList<Book>();
                   books.add(new Book ("NO BOOK WITH THIS TITLE"));
               } else {
@@ -126,5 +130,12 @@ public class SearchService extends IntentService {
         public DownloadException(String message, Throwable cause) {
             super(message, cause);
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

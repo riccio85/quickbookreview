@@ -1,5 +1,7 @@
 package app.com.example.rihanna.abookfinder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -34,6 +36,8 @@ public class FavoriteDetailFragment extends Fragment
     private ShareActionProvider mShareActionProvider;
 
     private Uri mUri;
+
+    private String previewString="";
 
     private static final int DETAIL_LOADER = 0;
 
@@ -90,6 +94,9 @@ public class FavoriteDetailFragment extends Fragment
             bookId=arguments.getString("idBook");
         }
         View rootView = inflater.inflate(R.layout.favorite_fragment_detail, container, false);
+
+
+
         bookCover = (ImageView) rootView.findViewById(R.id.s_thumbnail);
         title = (TextView) rootView.findViewById(R.id.s_title);
         authors = (TextView) rootView.findViewById(R.id.s_authors);
@@ -110,15 +117,31 @@ public class FavoriteDetailFragment extends Fragment
         String selection=BookContract.BookEntry.COLUMN_IDBOOK  + "= '" + bookId + "'";
         switch (v.getId()) {
             case R.id.deleteButton:
-                int de = getActivity().getContentResolver()
-                        .delete(BookContract.BookEntry.CONTENT_URI,
-                                BookContract.BookEntry.COLUMN_IDBOOK+ "=?",
-                                new String[]{bookId});
-                Toast.makeText(getActivity(),"Book deleted for favorite List", Toast.LENGTH_LONG).show();
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Delete Book?")
+                        .setMessage("Sure you want to remove this book from favorites?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                                int de = getActivity().getContentResolver()
+                                        .delete(BookContract.BookEntry.CONTENT_URI,
+                                                BookContract.BookEntry.COLUMN_IDBOOK+ "=?",
+                                                new String[]{bookId});
+                                Toast.makeText(getActivity(),"Book deleted for favorite List", Toast.LENGTH_LONG).show();
 
-                getActivity().finish();
+                                getActivity().finish();
                 /*End the display page and reload activity favorite*/
-                startActivity(new Intent(getActivity(), Favorites.class));
+                                startActivity(new Intent(getActivity(), Favorites.class));
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(R.mipmap.ic_delete)
+                        .show();
+
                 break;
         }
     }
@@ -136,7 +159,7 @@ public class FavoriteDetailFragment extends Fragment
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, bookTitle + BOOK_SHARE_HASHTAG );
+        shareIntent.putExtra(Intent.EXTRA_TEXT, bookTitle + "\n"+ previewString + "\n"+ BOOK_SHARE_HASHTAG );
         return shareIntent;
     }
 
@@ -165,13 +188,14 @@ public class FavoriteDetailFragment extends Fragment
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
-            bookCover.setImageDrawable(getResources().getDrawable(R.drawable.save));
-            final String cover=data.getString(COL_COLUMN_SMALLIM);
+            bookCover.setImageDrawable(getResources().getDrawable(R.drawable.browse));
+            previewString=data.getString(COL_COLUMN_BUY);
+            final String preview=data.getString(COL_COLUMN_BUY);
             bookCover.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    if(cover!=null){
+                    if(preview!=null){
                         Intent browserIntent = new Intent("android.intent.action.VIEW",
-                                Uri.parse(cover));
+                                Uri.parse(preview));
                         startActivity(browserIntent);
                     }
                 }
@@ -189,7 +213,6 @@ public class FavoriteDetailFragment extends Fragment
             }
         }
     }
-
     @Override
     public void onLoaderReset(Loader<Cursor> loader) { }
 }

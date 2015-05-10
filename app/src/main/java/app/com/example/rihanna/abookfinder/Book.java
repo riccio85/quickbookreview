@@ -31,7 +31,7 @@ public class Book implements Parcelable {
     }
 
     public Book(String id,String title,String author,String descrp,String publish,String isbn,String price,
-                String pages,float rating,String buyLink,Bitmap image,String smallThumb,String bigThumb){
+                String pages,float rating,String previewLink,Bitmap image,String smallThumb,String bigThumb){
 
         this.id=id;
         this.title=title;
@@ -42,7 +42,7 @@ public class Book implements Parcelable {
         this.price=price;
         this.pages=pages;
         this.rating=rating;
-        this.buyLink=buyLink;
+        this.buyLink=previewLink;
         this.imageId=image;
         this.smallThumb=smallThumb;
         this.bigThumb=bigThumb;

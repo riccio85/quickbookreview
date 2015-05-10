@@ -98,17 +98,6 @@
                             style="@style/BookDetailContent"
                             android:id="@+id/s_size" />
                     </TableRow>
-                    <TableRow>
-                        <TextView
-                            style="@style/BookDetailSubHeading"
-                            android:text="@string/preview_link" />
-                        <TextView
-                            style="@style/BookDetailContent"
-                            android:autoLink="web"
-                            android:clickable="true"
-                            android:linksClickable="true"
-                            android:id="@+id/s_buyLink" />
-                    </TableRow>
                 </TableLayout>
 
             </LinearLayout>

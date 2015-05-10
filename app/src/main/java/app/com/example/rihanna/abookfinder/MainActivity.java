@@ -1,6 +1,10 @@
 package app.com.example.rihanna.abookfinder;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -9,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -23,9 +28,29 @@ public class MainActivity extends ActionBarActivity {
                 EditText value = (EditText) findViewById(R.id.takeTitle);
                 String title = value.getText().toString();
                 Intent intent = new Intent(MainActivity.this, BookSearchView.class);
+
+
+                final String QUERY_BASE = "https://www.googleapis.com/books/v1/volumes?";
+                final String QUERY_PARAM = "q";
+                final String FORMAT_PARAM = "mode";
+                final String PRINT_TYPE = "printType";
+
+                Uri builtUri = Uri.parse(QUERY_BASE).buildUpon()
+                        .appendQueryParameter(QUERY_PARAM,title)
+                        .appendQueryParameter(FORMAT_PARAM, "json")
+                        .appendQueryParameter(PRINT_TYPE, "books")
+                        .build();
+                final String url= builtUri.toString();
+                if(checkInternetConnection()){
+
+
                 intent.putExtra("BookTitle", title);
                 Log.i("intent on Main with " + title, "3");
-                startActivity(intent);
+                startActivity(intent);}
+                else{
+                    Toast toast = Toast.makeText(getApplication(), "Can't do search now. You are offline!", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }
@@ -44,4 +69,15 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public boolean checkInternetConnection(){
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(this.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
+
 }

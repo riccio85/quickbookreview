@@ -123,7 +123,6 @@
                             android:id="@+id/buyLink" />
                     </TableRow>
                 </TableLayout>
-
             </LinearLayout>
         </LinearLayout>
 

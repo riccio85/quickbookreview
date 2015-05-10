@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import app.com.example.rihanna.abookfinder.db.*;
 
@@ -66,6 +68,11 @@ public class Favorites extends ActionBarActivity implements FavoriteListFragment
             args.putString("idBook", idBook);
             FavoriteDetailFragment fragment = new FavoriteDetailFragment();
             fragment.setArguments(args);
+
+             /*Shows the detailed book next to favorites*/
+            FrameLayout frameLT= (FrameLayout) findViewById(R.id.detailed_book);
+            frameLT.setVisibility(View.VISIBLE);
+
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.detailed_book, fragment, DETAILFRAGMENT_TAG)
                     .commit();

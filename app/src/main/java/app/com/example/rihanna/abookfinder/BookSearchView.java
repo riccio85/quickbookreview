@@ -1,12 +1,14 @@
 package app.com.example.rihanna.abookfinder;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 
 
 public class BookSearchView extends ActionBarActivity
@@ -20,8 +22,10 @@ public class BookSearchView extends ActionBarActivity
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_book_search);
 
+
         Intent intent = getIntent();
         book = intent.getStringExtra("BookTitle");
+
 
         if (findViewById(R.id.detail_container) != null) {
            mTwoPane = true;

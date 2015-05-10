@@ -1,5 +1,6 @@
 package app.com.example.rihanna.abookfinder;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -36,6 +37,7 @@ public class FavoriteDetail extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.detail, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);

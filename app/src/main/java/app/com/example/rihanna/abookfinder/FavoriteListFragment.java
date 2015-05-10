@@ -95,6 +95,11 @@ public class FavoriteListFragment extends Fragment implements LoaderManager.Load
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                 /*highlight the selected list item */
+                view.getFocusables(position);
+                view.setSelected(true);
+
                 Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
                 if (cursor != null) {
                     ((Callback) getActivity())

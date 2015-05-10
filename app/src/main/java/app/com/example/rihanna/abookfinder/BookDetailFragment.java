@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,6 +49,7 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         id=getArguments().getInt("idBook",-1);
         View rootView = inflater.inflate(R.layout.fragment_book_detail, container, false);
+
         LinearLayout layout1=(LinearLayout)rootView.findViewById(R.id.book_header_layout);
         image=(ImageView)rootView.findViewById(R.id.thumbnail);
         RatingBar rate=(RatingBar)rootView.findViewById(R.id.rating);
