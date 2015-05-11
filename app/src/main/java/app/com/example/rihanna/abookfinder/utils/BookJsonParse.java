@@ -27,7 +27,6 @@ public class BookJsonParse {
             ArrayList<Book> searchRlt = new ArrayList<Book>();
 //These are the names of the JSON objects that need to be extracted.
             final String KIND = "books#volumes";
-            final String TOTAL_COUNT = "totalItems";
             final String MAIN_TABLE = "items";
             final String VOLUME_INFO = "volumeInfo";
             final String ID = "id";
@@ -51,6 +50,7 @@ public class BookJsonParse {
             final String RATING= "averageRating";
             final String BUY_LINK="buyLink";
             final String PREV_LINK="previewLink";
+
 
             if (isJSONValid(jsonStr)) {
                 JSONObject booksJson = (JSONObject) new JSONObject(jsonStr);
@@ -116,21 +116,7 @@ public class BookJsonParse {
                      }catch(Exception e){}
                String price="";
  /*Google api doesn't work for buy link"
-               String buylink="";
-                   try{
-                       JSONObject saleInfo=bookInfo.getJSONObject(SALE_INFO);
-                       String forSale=saleInfo.getString(SALEABILITY);
-                       if(forSale.equals("FOR_SALE")){
-                           try{
-                               JSONObject listPrice=saleInfo.getJSONObject(LIST_PRICE);
-                               String lprice=listPrice.getString(AMOUNT);
-                               String curr=listPrice.getString(CURRENCY);
-                               price=lprice+curr;
-                               buylink=saleInfo.getString(BUY_LINK);
-                           }catch(Exception e){}
-                       }else{
-                       price="NOT_FOR_SALE";}
-                    }catch(Exception e){}*/
+
  /* Create the book and add it to the arraylist*/
                  bookL.add(new Book(id_b,title_b,authours_b,description_b,publish,
                                 isbn,price,pages_b,rates,previewLink, bitmap,smallIM,bigIM));
@@ -139,9 +125,10 @@ public class BookJsonParse {
                 return bookL;
              } else {
 /* If it is not possible to parse the json turns an arraylist with size 0 */
-            ArrayList<Book> bookL = new ArrayList<Book>();
+           ArrayList<Book> bookL = new ArrayList<Book>();
             bookList=bookL;
             return bookL;
+
             }
     }//end method parse
 

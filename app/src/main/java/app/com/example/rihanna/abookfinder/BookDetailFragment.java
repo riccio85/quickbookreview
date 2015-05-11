@@ -33,9 +33,7 @@ import java.util.ArrayList;
 import app.com.example.rihanna.abookfinder.db.*;
 import app.com.example.rihanna.abookfinder.utils.*;
 
-/**
- * Created by Rihanna on 16/04/2015.
- */
+
 public class BookDetailFragment extends Fragment implements View.OnClickListener
 {
     int id;
@@ -75,14 +73,6 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
             Bitmap imageL=viewBook.getImageLink();
             Drawable d = new BitmapDrawable(getResources(),imageL);
             image.setImageDrawable(d);
-
-                    /*(new View.OnClickListener() {
-                public void onClick(View view) {
-                    String ur=book.getBigThumb();
-                    Toast toast = Toast.makeText(getActivity(), ""+ur, Toast.LENGTH_SHORT);
-                   // showImage();
-                }
-            });*/
 
             image.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
@@ -143,22 +133,8 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                     bookCursor.close();
                 }
                 break;
-           // case R.id.thumbnail:
-            //    Toast toast = Toast.makeText(getActivity(), ""+book.getBigThumb(), Toast.LENGTH_SHORT);
         }
     }
-    //////////////////////////////////////////////////////////
- /*  @Override
-   public void onCreateOptionsMenu(Menu menu,MenuInflater inflater) {
-        //getActivity().getMenuInflater().inflate(R.menu.menu_book_detail, menu);
-        inflater.inflate(R.menu.menu_book_detail, menu);
-        MenuItem menuItem = menu.findItem(R.id.action_share);
-      //actionProvider=new ShareActionProvider(getActivity());
-     actionProvider =(ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-            if (book != null) {
-                actionProvider.setShareIntent(createShareBookDetailIntent());
-            }
-    }*/
 
     /*method to see the bookcover in bigThumbnail*/
     public void showImage() {

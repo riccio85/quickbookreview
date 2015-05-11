@@ -1,6 +1,5 @@
 package app.com.example.rihanna.abookfinder;
 
-
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -20,9 +19,6 @@ import android.widget.ListView;
 import app.com.example.rihanna.abookfinder.db.BookContract;
 import app.com.example.rihanna.abookfinder.utils.FavoriteAdapter;
 
-/**
- * Created by Rihanna on 19/04/2015.
- */
 public class FavoriteListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final String LOG_TAG = FavoriteListFragment.class.getSimpleName();

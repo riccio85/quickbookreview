@@ -6,9 +6,6 @@ import android.os.ResultReceiver;
 
 import org.json.JSONException;
 
-/**
- * Created by Rihanna on 07/04/2015.
- */
 public class SearchResultReceiver extends ResultReceiver {
     private Receiver mReceiver;
 

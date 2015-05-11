@@ -1,10 +1,10 @@
 
 	Quick Book Review Descritpion
 
-  Enter the title or the author  or the industry identifiers of a book and look which one of the books list you are looking for. Find the one? Go ahead to see details: ratings, overview, isbns, list price, and how many pages. And if you are not satisfied you got the preview link to see on the browser all about the book you are looking for. You can add it in your favorite book list. See details offline and share the title.  And if you don't remember the book cover click to see it. 
+  Enter the title or the author  or the industry identifiers of a book and look which one of the books list you are looking for. Find the one? Go ahead to see details: ratings, overview, isbns, list price, and how many pages. And if you are not satisfied you got the preview link to see on the browser all about the book you are looking for. You can add it in your favorite book list. See details offline, and share the title and the preview link.
 
 	Problem that solves  
-This app is about searching quickly for a book using a book title, author, isban etc... See the book review and ratings, if available see the list price and helps to save a list of books, a list you recommend to yourself to read or to get soon, and share it to freinds.
+This app is about searching quickly for a book using a book title, author, isban etc... See the book review and ratings, if available see the list price and helps to save a list of books, a list you recommend to yourself to read soon, and share it to friends.
 
 
 

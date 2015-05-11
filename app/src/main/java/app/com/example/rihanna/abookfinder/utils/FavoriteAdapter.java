@@ -25,14 +25,13 @@ public class FavoriteAdapter extends CursorAdapter {
         public final TextView title;
         public final TextView authors;
         public final TextView publisher;
-        // public final TextView pages;
+
 
         public ViewHolder(View view) {
             bookCover = (ImageView) view.findViewById(R.id.bookCover);
             title= (TextView) view.findViewById(R.id.bookTitle);
             authors = (TextView) view.findViewById(R.id.authors);
             publisher = (TextView) view.findViewById(R.id.publisher);
-            // pages = (TextView) view.findViewById(R.id.pages);
         }
     }
 
@@ -70,7 +69,7 @@ public class FavoriteAdapter extends CursorAdapter {
         viewHolder.title.setText(title);
         viewHolder.authors.setText(authors);
         viewHolder.publisher.setText(publisher);
-        // viewHolder.pages.setText(publisher);
+
     }
 
 

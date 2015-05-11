@@ -5,9 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by Rihanna on 09/04/2015.
- */
 public class BookDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "books.db";
     private static final int DATABASE_VERSION = 2;

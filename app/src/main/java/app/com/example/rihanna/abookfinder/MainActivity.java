@@ -64,7 +64,8 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-           startActivity(new Intent(this, Favorites.class));
+            Intent favIntent = new Intent(getApplicationContext(),Favorites.class);
+            startActivity(favIntent);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -73,7 +74,6 @@ public class MainActivity extends ActionBarActivity {
     public boolean checkInternetConnection(){
         ConnectivityManager cm =
                 (ConnectivityManager)this.getSystemService(this.CONNECTIVITY_SERVICE);
-
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();

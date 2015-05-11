@@ -1,7 +1,9 @@
 package app.com.example.rihanna.abookfinder;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,8 +26,11 @@ public class Favorites extends ActionBarActivity implements FavoriteListFragment
         if (findViewById(R.id.detailed_book) != null) {
             mTwoPane = true;
             if (savedInstanceState == null) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.detailed_book, new FavoriteDetailFragment(), DETAILFRAGMENT_TAG)
+
+                FavoriteDetailFragment favFrag=new FavoriteDetailFragment();
+
+                   getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.detailed_book, favFrag, DETAILFRAGMENT_TAG)
                         .commit();
             }
         } else {
@@ -68,7 +73,6 @@ public class Favorites extends ActionBarActivity implements FavoriteListFragment
             args.putString("idBook", idBook);
             FavoriteDetailFragment fragment = new FavoriteDetailFragment();
             fragment.setArguments(args);
-
              /*Shows the detailed book next to favorites*/
             FrameLayout frameLT= (FrameLayout) findViewById(R.id.detailed_book);
             frameLT.setVisibility(View.VISIBLE);

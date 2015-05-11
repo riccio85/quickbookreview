@@ -5,9 +5,7 @@ import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-/**
- * Created by Rihanna on 17/04/2015.
- */
+
 public class BookContract {
 
     public static final String CONTENT_AUTHORITY = "app.com.example.rihanna.abookfinder.provider";

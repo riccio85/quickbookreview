@@ -91,10 +91,12 @@ public class SearchService extends IntentService {
               if(nums==0){    //there is no book wih this title
                   books=new ArrayList<Book>();
                   books.add(new Book ("NO BOOK WITH THIS TITLE"));
+                  return books;
               } else {
                   books = parseResult(response);
+                  return books;
               }
-                return books;
+
                 }catch(Exception e){}
         } else {
             throw new DownloadException("Failed to fetch data!!");

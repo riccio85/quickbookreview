@@ -26,9 +26,7 @@ import app.com.example.rihanna.abookfinder.service.SearchResultReceiver;
 import app.com.example.rihanna.abookfinder.service.SearchService;
 import app.com.example.rihanna.abookfinder.utils.*;
 
-/**
- * Created by Rihanna on 15/04/2015.
- */
+
 public class BookSearchFragment extends Fragment
         implements SearchResultReceiver.Receiver,AdapterView.OnItemClickListener
     {
@@ -48,15 +46,9 @@ public class BookSearchFragment extends Fragment
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_book_search, container, false);
-
-
-
-
-           // progressDialog = new ProgressDialog(getActivity(),R.style.TransparentProgressDialog) ;
             bookTitle=getArguments().getString("bookTitle");
             twoPane=getArguments().getBoolean("mTwoPane");
             mListView = (ListView) rootView.findViewById(R.id.listview);
-          // progressDialog=(ProgressDialog)rootView.findViewById(R.id.pbLoading);
             final String QUERY_BASE = "https://www.googleapis.com/books/v1/volumes?";
             final String QUERY_PARAM = "q";
             final String FORMAT_PARAM = "mode";
@@ -93,30 +85,31 @@ public class BookSearchFragment extends Fragment
                    bookList=resultData.getParcelableArrayList("result");
 
                     if(bookList.size()==0||bookList==null){
-                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you with. Retry!!!", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getActivity(), "Can't fetch data correctly. Retry!!!", Toast.LENGTH_LONG);
                         toast.show();
+                        break;
                         /*case the search has no result */
                     }else if(bookList.size()==1 && bookList.get(0).getMessage().equals("NO BOOK WITH THIS TITLE")){
-                        Toast toast = Toast.makeText(getActivity(), "Search has no books for you.Retry!!!", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getActivity(), "Sorry.Can't find a book with this input.Retry!!!", Toast.LENGTH_LONG);
                         toast.show();
+                        break;
                         /*case to much time to serach */
                     }else if(bookList.size()==1 && bookList.get(0).getMessage().equals("SEARCH TAKES TO MUCH TIME")){
                         Toast toast = Toast.makeText(getActivity(), "Search is taking to much time.Retry!!!", Toast.LENGTH_LONG);
                         toast.show();
+                        break;
                     }
-                 /* Update ListView with result */
-                    if (bookList != null ) {
+                    else {
                         BookListViewAdapter adapter = new BookListViewAdapter(getActivity(),
                                 R.layout.fragment_book_search, bookList);
                         mListView.setAdapter(adapter);
-                       mListView.setOnItemClickListener(this);
+                        mListView.setOnItemClickListener(this);
                     }
-
                     break;
                 case SearchService.STATUS_ERROR:
                 /* Handle the error */
                     progressDialog.dismiss();
-                    Toast toast = Toast.makeText(getActivity(), "Please go back and put a book!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), "No search inut. Please go back to put a !", Toast.LENGTH_SHORT);
                     toast.show();
                     break;
             }

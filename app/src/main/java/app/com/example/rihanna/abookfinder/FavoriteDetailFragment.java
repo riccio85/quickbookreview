@@ -94,9 +94,6 @@ public class FavoriteDetailFragment extends Fragment
             bookId=arguments.getString("idBook");
         }
         View rootView = inflater.inflate(R.layout.favorite_fragment_detail, container, false);
-
-
-
         bookCover = (ImageView) rootView.findViewById(R.id.s_thumbnail);
         title = (TextView) rootView.findViewById(R.id.s_title);
         authors = (TextView) rootView.findViewById(R.id.s_authors);

@@ -11,9 +11,6 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-/**
- * Created by Rihanna on 09/04/2015.
- */
 public class BooksContentProvider extends ContentProvider {
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
