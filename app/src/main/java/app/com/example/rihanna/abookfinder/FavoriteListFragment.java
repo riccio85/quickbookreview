@@ -27,7 +27,6 @@ public class FavoriteListFragment extends Fragment implements LoaderManager.Load
     private int mPosition = ListView.INVALID_POSITION;
     private static final String SELECTED_KEY = "selected_position";
     private static final int FAVORITE_LOADER = 0;
-
     private static final String[] FAVORITE_COLUMNS = {
             BookContract.BookEntry.COLUMN_KEY,
             BookContract.BookEntry.COLUMN_IDBOOK,
@@ -126,7 +125,7 @@ public class FavoriteListFragment extends Fragment implements LoaderManager.Load
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+       public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         String sortOrder = BookContract.BookEntry.COLUMN_TITLE + " ASC";
         Uri booksUri = BookContract.BookEntry.CONTENT_URI;
         return new CursorLoader(getActivity(),
